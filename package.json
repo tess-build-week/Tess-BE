@@ -4,7 +4,7 @@
   "description": "Backend Repo for the Planets-with-TESS build week project at Lambda",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "node index.js",
     "server": "nodemon index.js"
   },
   "repository": {
@@ -31,6 +31,7 @@
     "helmet": "^3.18.0",
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.17.6",
+    "knex-cleaner": "^1.1.4",
     "pg": "^7.11.0",
     "sqlite3": "^4.0.9"
   }
