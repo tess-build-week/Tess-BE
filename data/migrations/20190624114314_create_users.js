@@ -13,9 +13,19 @@ exports.up = function(knex, Promise) {
             .string('password', 128)
             .notNullable();
     })
+
+    .createTable('stars', stars => {
+        stars.increments()
+
+        stars
+            .string('name', 128)
+            .notNullable()
+            .unique();
+    })
 };
 
 exports.down = function(knex, Promise) {
     return knex.schema
-        .dropTableIfExists('users');
+        .dropTableIfExists('users')
+        .dropTableIfExists('stars');
 };
