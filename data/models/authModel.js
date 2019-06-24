@@ -1,6 +1,4 @@
 const db = require('../dbConfig');
-
-
 module.exports = {
     addUser,
     findBy,

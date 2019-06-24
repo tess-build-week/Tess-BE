@@ -2,6 +2,7 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 
 const model = require('../models/authModel');
+const restricted = require('../middleware/restricted');
 
 const router = express.Router();
 
@@ -77,6 +78,11 @@ router.post('/login', (req, res) => {
         })
 })
 
+//Checking restricted middleware
+
+// router.get('/tokenTest', restricted, (req, res) => {
+//     res.send(`<h3> You have a token, good work </h3>`)
+// })
 
 
 module.exports = router;
