@@ -2,22 +2,49 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 
 const model = require('../models/authModel');
-const { generateToken } = require('../middleware/generateToken');
+
+const router = express.Router();
+
+
+//generate token
+const jwt = require('jsonwebtoken');
+const secrets = require('../secrets/secret');
+
+function generateToken(user) {
+    const payload = {
+        subject: user.id,
+        username: user.username,
+    }
+
+    const options = {
+        expiresIn: '1d'
+    }
+
+    return jwt.sign(payload, secrets.jwtSecret, options);
+}
+
+router.get('/', (req, res) => {
+    res.send(`<h3> Auth Router is online </h3>`)
+})
 
 //Register
 
-
 router.post('/register', (req, res) => {
     let info = req.body;
+    console.log(info);
     const hash = bcrypt.hashSync(info.password, 8);
     info.password = hash; //Storing hash as password
+    console.log(info);
 
     model.addUser(info)
         .then(saved => {
             res.status(201).json(saved);
         })
         .catch(error => {
-            res.status(500).json(error);
+            res.status(500).json({
+                message: 'Error while registering user',
+                error
+            });
         })
 });
 
@@ -49,8 +76,6 @@ router.post('/login', (req, res) => {
             })
         })
 })
-
-
 
 
 

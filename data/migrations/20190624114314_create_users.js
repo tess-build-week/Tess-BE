@@ -14,18 +14,18 @@ exports.up = function(knex, Promise) {
             .notNullable();
     })
 
-    .createTable('stars', stars => {
-        stars.increments()
+    // .createTable('stars', stars => {
+    //     stars.increments()
 
-        stars
-            .string('name', 128)
-            .notNullable()
-            .unique();
-    })
+    //     stars
+    //         .string('name', 128)
+    //         .notNullable()
+    //         .unique();
+    // })
 };
 
 exports.down = function(knex, Promise) {
     return knex.schema
         .dropTableIfExists('users')
-        .dropTableIfExists('stars');
+        // .dropTableIfExists('stars');
 };

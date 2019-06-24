@@ -8,10 +8,14 @@ Github: http://www.github.com/Mjfalahee
 ###Table Schema
 
 Stars:
-tessid = unique id, PK
+..*tessid = unique id, PK
+
+Light Curves:
+
+Planets: 
 
 
 Users:
-Username
-Password
+..*Username
+..*Password (hashed)
 
