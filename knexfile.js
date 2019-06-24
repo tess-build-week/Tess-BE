@@ -18,12 +18,7 @@ module.exports = {
 
   production: {
     client: 'pg',
-    connection: { 
-        host: dbConnection,
-        port: 5432,
-        password: 'cjjkmpsTESS',
-        user: 'TESSadmin'
-    },
+    connection: dbConnection,
     migrations: {
       directory: './data/migrations',
     },
