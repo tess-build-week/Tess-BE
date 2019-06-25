@@ -7,6 +7,8 @@ Github: http://www.github.com/Mjfalahee
 
 ###Table Schema
 
+![Alt text](./assets/schema.PNG)
+
 Stars:
 ..*tessid = unique id, PK
 
@@ -18,6 +20,10 @@ Planets:
 Users:
 ..*Username
 ..*Password (hashed)
+
+dummyData
+
+planet: id, name, distance, lumosity, spectrum, metallicity, variability
 
 
 endpoints are:
