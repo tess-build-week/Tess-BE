@@ -29,7 +29,7 @@ function findBy(filter) {
 
 function findPlanetsByTessId(tessid) {
     return db('planets')
-        .where({ tessid });
+        .where({ star_tessid: tessid });
 }
 
 //Not using all of the CRUD api, so I've commented these out.
