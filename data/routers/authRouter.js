@@ -1,7 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 
-const model = require('../models/authModel');
+const authModel = require('../models/authModel');
 const restricted = require('../middleware/restricted');
 const authMiddleware = require('../middleware/authMiddleware');
 
@@ -36,7 +36,7 @@ router.post('/register', authMiddleware.registerMid, (req, res) => {
     const hash = bcrypt.hashSync(info.password, 8);
     info.password = hash; //Storing hash as password
 
-    model.addUser(info)
+    authModel.addUser(info)
         .then(saved => {
             res.status(201).json({
                 message: 'User registered.', 
@@ -56,7 +56,7 @@ router.post('/register', authMiddleware.registerMid, (req, res) => {
 router.post('/login', (req, res) => {
     let {username, password} = req.body;
 
-    model.findBy({ username })
+    authModel.findBy({ username })
         .first()
         .then(user => {
             if (user && bcrypt.compareSync(password, user.password)) {
@@ -82,7 +82,7 @@ router.post('/login', (req, res) => {
 //Checking restricted middleware
 
 router.get('/tokenTest', restricted, (req, res) => {
-    model.getAll()
+    authModel.getAll()
         .then(users => {
             res.status(200).json(users);
         })

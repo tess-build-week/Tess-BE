@@ -10,9 +10,11 @@ module.exports = {
     // removeStar
 }
 
-//returns all the of the stars in the db
-function find() {
-    return db('stars');
+//returns a limited number the of the stars in the db, offset by num
+function find(lim, off) {
+    return db('stars')
+        .limit(lim)
+        .offset(off)
 };
 
 //should return one stars
@@ -22,9 +24,11 @@ function findByTessId(tessid) {
 }
 
 //may return many stars, not sure how this one will work without data.
-function findBy(filter) {
+function findBy(filter, lim, off) {
     return db('stars')
-        .where(filter);
+        .where(filter)
+        .limit(lim)
+        .offset(off);
 }
 
 function findPlanetsByTessId(tessid) {
