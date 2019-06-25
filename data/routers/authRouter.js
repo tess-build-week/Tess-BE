@@ -32,10 +32,10 @@ router.get('/', (req, res) => {
 
 router.post('/register', (req, res) => {
     let info = req.body;
-    console.log(info);
+    //console.log(info);
     const hash = bcrypt.hashSync(info.password, 8);
     info.password = hash; //Storing hash as password
-    console.log(info);
+    //console.log(info);
 
     model.addUser(info)
         .then(saved => {

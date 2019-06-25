@@ -6,9 +6,9 @@ module.exports = {
 }
 
 async function addUser(user) {
-   const [id] = await db('users')
+   await db('users')
         .insert(user, 'id');
-        return findById(id);
+        return findBy({username: user.username});
 }
 
 function findBy(filter) {
