@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 
 const model = require('../models/authModel');
 const restricted = require('../middleware/restricted');
+const authMiddleware = require('../middleware/authMiddleware');
 
 const router = express.Router();
 
@@ -30,7 +31,7 @@ router.get('/', (req, res) => {
 
 //Register
 
-router.post('/register', (req, res) => {
+router.post('/register', authMiddleware.registerMid, (req, res) => {
     let info = req.body;
     //console.log(info);
     const hash = bcrypt.hashSync(info.password, 8);

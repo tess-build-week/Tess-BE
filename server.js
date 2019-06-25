@@ -3,6 +3,8 @@ const helmet = require('helmet');
 const cors = require('cors');
 
 const authRouter = require('./data/routers/authRouter');
+const planetRouter = require('./data/routers/planetRouter');
+const starRouter = require('./data/routers/starRouter');
 
 const server = express();
 server.use(express.json(), helmet(), cors());
