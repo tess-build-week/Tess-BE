@@ -39,12 +39,14 @@ router.post('/register', (req, res) => {
 
     model.addUser(info)
         .then(saved => {
-            res.status(201).json(saved);
+            res.status(201).json({
+                message: 'User registered.', 
+                saved
+            });
         })
         .catch(error => {
             res.status(500).json({
                 message: 'Error while registering user',
-                error
             });
         })
 });
