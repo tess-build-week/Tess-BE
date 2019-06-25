@@ -1,5 +1,5 @@
 {
-  "name": "Tess-BE",
+  "name": "tessBE",
   "version": "1.0.0",
   "description": "Backend Repo for the Planets-with-TESS build week project at Lambda",
   "main": "index.js",

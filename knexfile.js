@@ -19,11 +19,6 @@ module.exports = {
   production: {
     client: 'pg',
     connection: dbConnection,
-    ssl: true,
-    pool: {
-        min: 2,
-        max: 10
-    },
     migrations: {
       directory: './data/migrations',
     },
@@ -32,3 +27,19 @@ module.exports = {
     },
   },
 };
+
+
+
+
+// ssl: true,
+// pool: {
+//     min: 2,
+//     max: 10
+// },
+// am I supposed to do
+//connection : {
+//   host: hostname,
+//   user: username,
+//   password: password,
+//   database: database
+// },
