@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 
 const model = require('../models/authModel');
 const restricted = require('../middleware/restricted');
+const authMiddleware = require('../middleware/authMiddleware');
 
 const router = express.Router();
 
@@ -30,21 +31,23 @@ router.get('/', (req, res) => {
 
 //Register
 
-router.post('/register', (req, res) => {
+router.post('/register', authMiddleware.registerMid, (req, res) => {
     let info = req.body;
-    console.log(info);
+    //console.log(info);
     const hash = bcrypt.hashSync(info.password, 8);
     info.password = hash; //Storing hash as password
-    console.log(info);
+    //console.log(info);
 
     model.addUser(info)
         .then(saved => {
-            res.status(201).json(saved);
+            res.status(201).json({
+                message: 'User registered.', 
+                saved
+            });
         })
         .catch(error => {
             res.status(500).json({
                 message: 'Error while registering user',
-                error
             });
         })
 });

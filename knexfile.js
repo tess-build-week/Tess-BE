@@ -1,11 +1,5 @@
 const dbConnection = process.env.DATABASE_URL;
-const { Client } = require('pg');
-const client = new Client({
-    host: 'tess.ccrn1c0nfkh1.us-east-2.rds.amazonaws.com',
-    port: '5432',
-    user: 'TESSadmin',
-    password: 'cjjkmpsTESS'
-})
+
 
 module.exports = {
   development: {
@@ -21,10 +15,9 @@ module.exports = {
       directory: './data/seeds',
     },
   },
-
   production: {
     client: 'pg',
-    connection: client,
+    connection: dbConnection,
     migrations: {
       directory: './data/migrations',
     },
@@ -33,3 +26,19 @@ module.exports = {
     },
   },
 };
+
+
+
+
+// ssl: true,
+// pool: {
+//     min: 2,
+//     max: 10
+// },
+// am I supposed to do
+//connection : {
+//   host: hostname,
+//   user: username,
+//   password: password,
+//   database: database
+// },
