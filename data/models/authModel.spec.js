@@ -13,9 +13,9 @@ describe('authModel', () => {
 
     describe('addUser()', () => {
         it('should insert users', async () => {
+
             await model.addUser({ username: "Bob", password: "password" });
             await model.addUser({ username: "Tom", password: "password" });
-
             const users = await db('users');
 
             expect(users).toHaveLength(2);

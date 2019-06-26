@@ -15,9 +15,9 @@ server.get('/', (req, res) => {
 });
 
 
-server.use('/auth/', authRouter);
-server.use('/planets/', planetRouter);
-server.use('/stars/', starRouter);
+server.use('/auth', authRouter);
+server.use('/planets', planetRouter);
+server.use('/stars', starRouter);
 
 
 module.exports = server;
