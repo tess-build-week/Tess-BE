@@ -11,12 +11,12 @@ server.use(express.json(), helmet(), cors());
 
 
 server.get('/', (req, res) => {
-    res.send(`<h3> TESS api is online </h3>`);
-})
+    res.status(200).json({api: 'Online'});
+});
 
 
 server.use('/auth/', authRouter);
-server.use('/exoplanets/', planetRouter);
+server.use('/planets/', planetRouter);
 server.use('/stars/', starRouter);
 
 

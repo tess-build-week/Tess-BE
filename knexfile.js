@@ -15,6 +15,19 @@ module.exports = {
       directory: './data/seeds',
     },
   },
+  testing: {
+    client: 'sqlite3',
+    connection: {
+      filename: './data/test.db3',
+    },
+    useNullAsDefault: true,
+    migrations: {
+      directory: './data/migrations',
+    },
+    seeds: {
+      directory: './data/seeds',
+    },
+  },
   production: {
     client: 'pg',
     connection: dbConnection,
@@ -26,19 +39,3 @@ module.exports = {
     },
   },
 };
-
-
-
-
-// ssl: true,
-// pool: {
-//     min: 2,
-//     max: 10
-// },
-// am I supposed to do
-//connection : {
-//   host: hostname,
-//   user: username,
-//   password: password,
-//   database: database
-// },

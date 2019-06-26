@@ -1,7 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 
-const model = require('../models/authModel');
+const authModel = require('../models/authModel');
 const restricted = require('../middleware/restricted');
 const authMiddleware = require('../middleware/authMiddleware');
 
@@ -29,16 +29,14 @@ router.get('/', (req, res) => {
     res.send(`<h3> Auth Router is online </h3>`)
 })
 
-//Register
+//Register. Saves password as a hash. Returns the newly registered user.
 
 router.post('/register', authMiddleware.registerMid, (req, res) => {
     let info = req.body;
-    //console.log(info);
     const hash = bcrypt.hashSync(info.password, 8);
     info.password = hash; //Storing hash as password
-    //console.log(info);
 
-    model.addUser(info)
+    authModel.addUser(info)
         .then(saved => {
             res.status(201).json({
                 message: 'User registered.', 
@@ -53,12 +51,12 @@ router.post('/register', authMiddleware.registerMid, (req, res) => {
 });
 
 
-//Login
+//Login. Returns a token along with a message.
 
 router.post('/login', (req, res) => {
     let {username, password} = req.body;
 
-    model.findBy({ username })
+    authModel.findBy({ username })
         .first()
         .then(user => {
             if (user && bcrypt.compareSync(password, user.password)) {
@@ -83,9 +81,15 @@ router.post('/login', (req, res) => {
 
 //Checking restricted middleware
 
-// router.get('/tokenTest', restricted, (req, res) => {
-//     res.send(`<h3> You have a token, good work </h3>`)
-// })
+router.get('/tokenTest', restricted, (req, res) => {
+    authModel.getAll()
+        .then(users => {
+            res.status(200).json(users);
+        })
+        .catch(error => {
+            res.status(500).json(error);
+        })
+});
 
 
 module.exports = router;
