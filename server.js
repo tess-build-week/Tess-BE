@@ -16,7 +16,7 @@ server.get('/', (req, res) => {
 
 
 server.use('/auth/', authRouter);
-server.use('/exoplanets/', planetRouter);
+server.use('/planets/', planetRouter);
 server.use('/stars/', starRouter);
 
 

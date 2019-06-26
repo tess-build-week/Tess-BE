@@ -17,9 +17,11 @@ function definedValues(req, res, next) {
 
 
 function validatePlanetId(req, res, next) {
-    if (req.params.id) {
-        planetModel.findById(req.params.id)
+    console.log(req.body.id);
+    if (req.body.id.length > 0) {
+        planetModel.findById(req.body.id)
             .then(planet => {
+                console.log(planet);
                 if (planet.star_tessid) {
                     req.planet = planet;
                     next();
@@ -34,5 +36,7 @@ function validatePlanetId(req, res, next) {
                     message: 'Error completing .get Request for planet info'
                 })
             })
+        } else {
+            res.status(500).json({ message: 'Please provide an id within the request body.'})
         }
 }

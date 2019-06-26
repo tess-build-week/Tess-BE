@@ -6,9 +6,10 @@ module.exports = {
 }
 
 
-
+//checks for a limit for the data, if there is none it passes defaults
 function definedValues(req, res, next) {
-    if (req.body.limit && req.body.offset) {
+    console.log(req.body);
+    if (req.body.limit > 0) {
         next();
     } else {
         req.body.limit = 10;
@@ -22,7 +23,10 @@ function validateTessId(req, res, next) {
     if (req.params.id) {
         starModel.findByTessId(req.params.id)
             .then(star => {
+                //console.log('inside .then')
+                //console.log(star);
                 if (star.tessid) {
+                    //console.log(star);
                     req.star = star;
                     next();
                 } else {

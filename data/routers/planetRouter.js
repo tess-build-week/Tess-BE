@@ -17,7 +17,7 @@ router.get('/', definedValues, (req, res) => {
         })
 });
 
-router.get('/:id', validatePlanetId, (req, res) => {
+router.get('/id', validatePlanetId, (req, res) => {
     res.status(200).json(req.planet);
 });
 

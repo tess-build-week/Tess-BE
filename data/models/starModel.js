@@ -1,7 +1,7 @@
-const db = requiure('../dbConfig');
+const db = require('../dbConfig');
 
 module.exports = {
-    findBy,
+    // filterBy,
     findByTessId,
     find,
     findPlanetsByTessId
@@ -22,18 +22,19 @@ function find(lim, off) {
 };
 
 //should return one stars
-function findByTessId(tessid) {
+function findByTessId(id) {
     return db('stars')
-        .where({ tessid });
+        .where({ tessid: id })
+        .first();
 }
 
-//may return many stars, not sure how this one will work without data.
-function findBy(filter, lim, off) {
-    return db('stars')
-        .where(filter)
-        .limit(lim)
-        .offset(off);
-}
+//may return many stars, not sure how this one will work without data. Not quite working.
+// function filterBy(filt, value, lim, off) {
+//     return db('stars')
+//         .where({ filt: value })
+//         .limit(lim)
+//         .offset(off);
+// }
 
 function findPlanetsByTessId(tessid) {
     return db('planets')
