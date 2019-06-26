@@ -28,7 +28,7 @@ exports.up = function(knex, Promise) {
         tbl
             .integer('magnitude');
         tbl
-            .integer('luminosity');
+            .string('luminosity');
         tbl
             .integer('star_mass');
         tbl
