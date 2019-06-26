@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "server": "nodemon index.js",
-    "testing": "cross-env DB_ENV=testing jest --watch"
+    "testing": "cross-env DB_ENV=testing jest --watch --verbose"
   },
   "repository": {
     "type": "git",
@@ -36,5 +36,8 @@
     "knex-cleaner": "^1.1.4",
     "pg": "^7.11.0",
     "sqlite3": "^4.0.9"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }
