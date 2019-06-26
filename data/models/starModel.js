@@ -10,6 +10,10 @@ module.exports = {
     // removeStar
 }
 
+//Because there will be so much data in this table I've had to include a limit
+//for most of the methods that grab numerous rows because otherwise you'll end up
+//with way too much data. This gives the user the ability to pick how much data they want
+
 //returns a limited number the of the stars in the db, offset by num
 function find(lim, off) {
     return db('stars')

@@ -11,8 +11,10 @@ module.exports = {
 }
 
 //returns all the of the planets in the db
-function find() {
-    return db('exoplanets');
+function find(lim, off) {
+    return db('exoplanets')
+        .limit(lim)
+        .offset(off);
 };
 
 //should return one planet
@@ -22,7 +24,7 @@ function findById(planetid) {
 }
 
 //may return many planets, not sure how this one will work without data.
-function findBy(filter) {
+function findBy(filter, lim, off) {
     return db('exoplanets')
         .where(filter)
 }
