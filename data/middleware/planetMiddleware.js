@@ -8,6 +8,9 @@ module.exports = {
 function definedValues(req, res, next) {
     if (req.body.limit && req.body.offset) {
         next();
+    } else if (req.body.limit) {
+        req.body.offset = 0;
+        next();
     } else {
         req.body.limit = 10;
         req.body.offset = 0;
@@ -27,7 +30,7 @@ function validatePlanetId(req, res, next) {
                     next();
                 } else {
                     res.status(404).json({
-                        message: `Planet not found with ID: ${req.params.id}`
+                        message: `Planet not found with ID: ${req.body.id}`
                     })
                 }
             })
