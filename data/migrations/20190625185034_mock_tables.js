@@ -51,7 +51,7 @@ exports.up = function(knex, Promise) {
             .unsigned()
             .notNullable()
             .references('tessid')
-            .inTable('stars')
+            .inTable('mockstars')
             .onDelete('RESTRICT')
             .onUpdate('CASCADE');
         
