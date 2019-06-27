@@ -1,12 +1,13 @@
 const db = require('../dbConfig.js');
 const model = require('./planetModel');
+require('jest-extended');
 
 
 describe('planetModel', () => {
     describe('find(lim, off)', () => {
-        it('returns a list of planets, given a limit and offset', async () => {
+        it('returns an array of objects, given a limit and offset', async () => {
             const find = await model.find(1, 0)
-            expect(find).toHaveLength(1);
+            expect(find).toBeArray();
         })
         it('returns planets with variable limits', async () => {
             const one = await model.find(1,0);
