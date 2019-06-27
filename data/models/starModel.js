@@ -37,7 +37,7 @@ function findByTessId(id) {
 // }
 
 function findPlanetsByTessId(tessid) {
-    return db('mockplanets')
+    return db('planets')
         .where({ star_tessid: tessid });
 }
 
