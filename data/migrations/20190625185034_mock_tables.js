@@ -13,8 +13,6 @@ exports.up = function(knex, Promise) {
             .notNullable();
     })
     .createTable('stars', tbl => {
-        tbl.increments();
-
         tbl
             .integer('tessid')
             .unique()
@@ -43,8 +41,6 @@ exports.up = function(knex, Promise) {
             .string('declination');
     })
     .createTable('planets', tbl => {
-        tbl.increments();
-
         tbl
             .string('planetid')
             .unique()
