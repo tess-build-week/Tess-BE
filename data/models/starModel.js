@@ -4,10 +4,10 @@ module.exports = {
     // filterBy,
     findByTessId,
     find,
-    findPlanetsByTessId
-    // addStar,
-    // updateStar,
-    // removeStar
+    findPlanetsByTessId,
+    addStar,
+    updateStar,
+    removeStar
 }
 
 //Because there will be so much data in this table I've had to include a limit
@@ -43,19 +43,22 @@ function findPlanetsByTessId(tessid) {
 
 //Not using all of the CRUD api, so I've commented these out.
 
-// function addStar(starinfo) {
-//     return db('stars')
-//         .insert(starinfo)
-// }
+function addStar(starinfo) {
+    return db('stars')
+        .insert(starinfo)
+        .then(ids => {
+            return findByTessId(ids[0]);
+        });
+}
 
-// function updateStar(tessid, changes) {
-//     return db('stars')
-//         .where({ tessid })
-//         .update(changes)
-// }
+function updateStar(tessid, changes) {
+    return db('stars')
+        .where({ tessid })
+        .update(changes)
+}
 
-// function removeStar(tessid) {
-//     return db('stars')
-//         .where({ tessid })
-//         .del()
-// };
+function removeStar(tessid) {
+    return db('stars')
+        .where({ tessid })
+        .del()
+};

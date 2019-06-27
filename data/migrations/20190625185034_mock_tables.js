@@ -22,13 +22,13 @@ exports.up = function(knex, Promise) {
         tbl
             .string('twomass', 255);
         tbl
-            .integer('gaiaid');
+            .bigInteger('gaiaid');
         tbl
             .string('sector');
         tbl
             .integer('magnitude');
         tbl
-            .integer('luminosity');
+            .string('luminosity');
         tbl
             .integer('star_mass');
         tbl

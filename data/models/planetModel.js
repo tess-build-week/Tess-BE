@@ -24,6 +24,7 @@ function findById(planetid) {
         .first();
 }
 
+
 //may return many planets, not sure how this one will work without data.
 // function findBy(filter, lim, off) {
 //     return db('planets')

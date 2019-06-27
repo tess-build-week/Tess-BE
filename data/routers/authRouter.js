@@ -26,18 +26,20 @@ function generateToken(user) {
 }
 
 router.get('/', (req, res) => {
-    res.send(`<h3> Auth Router is online </h3>`)
+    res.status(200).json({message: "It's up"});
 })
 
 //Register. Saves password as a hash. Returns the newly registered user.
 
 router.post('/register', authMiddleware.registerMid, (req, res) => {
+    //console.log('Inside router.post ========================================');
     let info = req.body;
     const hash = bcrypt.hashSync(info.password, 8);
     info.password = hash; //Storing hash as password
 
     authModel.addUser(info)
         .then(saved => {
+            //console.log(saved);
             res.status(201).json({
                 message: 'User registered.', 
                 saved

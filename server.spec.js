@@ -3,6 +3,9 @@ const server = require('./server');
 
 describe('server', () => {
     describe('get /', () => {
+        it('Environment should be set to testing', () => {
+            expect(process.env.DB_ENV).toBe('testing');
+        })
         it('responds with 200, OK.', () => {
             return supertest(server)
                 .get('/')
@@ -17,4 +20,4 @@ describe('server', () => {
                 });
         });
     });
-});
+})

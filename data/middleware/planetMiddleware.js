@@ -8,6 +8,9 @@ module.exports = {
 function definedValues(req, res, next) {
     if (req.body.limit && req.body.offset) {
         next();
+    } else if (req.body.limit) {
+        req.body.offset = 0;
+        next();
     } else {
         req.body.limit = 10;
         req.body.offset = 0;
@@ -17,17 +20,17 @@ function definedValues(req, res, next) {
 
 
 function validatePlanetId(req, res, next) {
-    console.log(req.body.id);
+    //console.log(req.body.id);
     if (req.body.id.length > 0) {
         planetModel.findById(req.body.id)
             .then(planet => {
-                console.log(planet);
+                //console.log(planet);
                 if (planet.star_tessid) {
                     req.planet = planet;
                     next();
                 } else {
                     res.status(404).json({
-                        message: `Planet not found with ID: ${req.params.id}`
+                        message: `Planet not found with ID: ${req.body.id}`
                     })
                 }
             })
