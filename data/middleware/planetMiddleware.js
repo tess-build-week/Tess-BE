@@ -20,11 +20,11 @@ function definedValues(req, res, next) {
 
 
 function validatePlanetId(req, res, next) {
-    console.log(req.body.id);
+    //console.log(req.body.id);
     if (req.body.id.length > 0) {
         planetModel.findById(req.body.id)
             .then(planet => {
-                console.log(planet);
+                //console.log(planet);
                 if (planet.star_tessid) {
                     req.planet = planet;
                     next();

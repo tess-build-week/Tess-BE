@@ -9,7 +9,7 @@ const { definedValues, validateTessId } = require('../middleware/starMiddleware'
 //get 10 stars' data by default, but can be passed values for limit and offset
 //in order to get more or less, or data found later in the db
 router.get('/', definedValues, (req, res) => {
-    console.log(req.body.limit, req.body.offset);
+    //console.log(req.body.limit, req.body.offset);
     starModel.find(req.body.limit, req.body.offset)
         .then(stars => {
             res.status(200).json(stars)
