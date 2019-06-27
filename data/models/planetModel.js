@@ -12,14 +12,14 @@ module.exports = {
 
 //returns all the of the planets in the db
 function find(lim, off) {
-    return db('planets')
+    return db('mockplanets')
         .limit(lim)
         .offset(off);
 };
 
 //should return one planet -- PlanetID won't really work because it's a string. Might need to be passed into req.body rather than as a parameter for this reason. 
 function findById(planetid) {
-    return db('planets')
+    return db('mockplanets')
         .where({ planetid })
         .first();
 }

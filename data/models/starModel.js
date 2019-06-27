@@ -16,14 +16,14 @@ module.exports = {
 
 //returns a limited number the of the stars in the db, offset by num
 function find(lim, off) {
-    return db('stars')
+    return db('mockstars')
         .limit(lim)
         .offset(off)
 };
 
 //should return one stars
 function findByTessId(id) {
-    return db('stars')
+    return db('mockstars')
         .where({ tessid: id })
         .first();
 }
@@ -37,14 +37,14 @@ function findByTessId(id) {
 // }
 
 function findPlanetsByTessId(tessid) {
-    return db('planets')
+    return db('mockplanets')
         .where({ star_tessid: tessid });
 }
 
 //Not using all of the CRUD api, so I've commented these out.
 
 function addStar(starinfo) {
-    return db('stars')
+    return db('mockstars')
         .insert(starinfo)
         .then(ids => {
             return findByTessId(ids[0]);
@@ -52,13 +52,13 @@ function addStar(starinfo) {
 }
 
 function updateStar(tessid, changes) {
-    return db('stars')
+    return db('mockstars')
         .where({ tessid })
         .update(changes)
 }
 
 function removeStar(tessid) {
-    return db('stars')
+    return db('mockstars')
         .where({ tessid })
         .del()
 };

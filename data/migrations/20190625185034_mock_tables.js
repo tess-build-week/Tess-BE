@@ -12,7 +12,7 @@ exports.up = function(knex, Promise) {
             .string('password', 128)
             .notNullable();
     })
-    .createTable('stars', tbl => {
+    .createTable('mockstars', tbl => {
         tbl
             .integer('tessid')
             .unique()
@@ -40,7 +40,7 @@ exports.up = function(knex, Promise) {
         tbl
             .string('declination');
     })
-    .createTable('planets', tbl => {
+    .createTable('mockplanets', tbl => {
         tbl
             .string('planetid')
             .unique()
@@ -67,6 +67,6 @@ exports.up = function(knex, Promise) {
 exports.down = function(knex, Promise) {
   return knex.schema
     .dropTableIfExists('planets')
-    .dropTableIfExists('stars')
-    .dropTableIfExists('users');
+    .dropTableIfExists('mockstars')
+    .dropTableIfExists('mockusers');
 };
