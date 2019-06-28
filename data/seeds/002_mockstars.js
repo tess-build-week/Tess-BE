@@ -1,7 +1,7 @@
 
 exports.seed = function(knex, Promise) {
       // Inserts seed entries
-      return knex('stars').insert([
+      return knex('mockstars').insert([
           {tessid: 199809518, twomass: "51245932-5641816", gaiaid: 41489234669675, sector: "s0001-s0002", magnitude: 19, luminosity: 1.773, star_mass: 36, star_radius: 48, constellation: "Cetus", disposition: "b", rightascension: "28:42:55.656", declination: "-12:24:97.737"}, 
           {tessid: 90953987, twomass: "82783475-1467761", gaiaid: 27795380825279, sector: "s0001-s0002", magnitude: 8, luminosity: 1.3911, star_mass: 31, star_radius: 46, constellation: "Canis Minor", disposition: "a", rightascension: "29:40:41.652", declination: "-60:48:58.143"}, 
           {tessid: 191615340, twomass: "51983424-2083802", gaiaid: 51241116434274, sector: "s0002-s0004", magnitude: 17, luminosity: 3.0679, star_mass: 55, star_radius: 25, constellation: "Orion", disposition: "c", rightascension: "96:95:47.392", declination: "-39:80:24.208"},
